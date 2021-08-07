@@ -8,7 +8,10 @@ html {
 	
 /*** COLOR SYSTEM ***/
 	
-/* CHANGE THESE */
+/* 
+GLOBAL COLOR SETUP (HSL)
+Set the global colors below using HSL variables.
+*/
 	
 	--primary-h: 44;
 	--primary-s: 98%;
@@ -26,12 +29,23 @@ html {
 	--base-s: 70.5%;
 	--base-l: 47.8%;
 
-/* NO TOUCHEY */
-	
+/* 
+SHADING VARIABLES
+If you want to adjust the generated shade variants, you can adjust the percentages here.
+Higher percentages are lighter and lower are darker.
+*/
+
 	--ultra-light: 95%;
 	--light: 85%;
 	--dark: 25%;
 	--ultra-dark: 10%;
+
+/* 
+GLOBAL COLOR VARIABLES
+These are the variables you can use in styling. They don't need to be edited.
+Future plans: Auto generate full complimentary, triadic, analogous, etc. color schemes.
+*/
+
 	--primary: hsl(var(--primary-h), var(--primary-s), var(--primary-l));
 	--primary-ultra-light: hsl(var(--primary-h), var(--primary-s), var(--ultra-light));
 	--primary-light: hsl(var(--primary-h), var(--primary-s), var(--light));
@@ -65,11 +79,14 @@ html {
 	
 /*** END COLOR SYSTEM ***/
 	
-/*** CLAMP SYSTEM ***/
+/***
+CLAMP SYSTEM
+These fill the necessary min/max viewport variables in the clamp functions used throughout the system.
+If you want to base the clamp functions off different viewport variables, you can change them here.
+***/
 	
 	--vp-min: 32; /* Viewport Min Size in REM */
 	--vp-max: 108; /* Viewport Max Size in REM */
-	--calc-clamp: clamp(var(--clamp-min) * 1rem, calc(var(--clamp-min) * 1rem + ((1vw - (var(--vp-min) / 100) * 1rem) * (100 * (var(--clamp-max) - var(--clamp-min)) / (var(--vp-max) - var(--vp-min))))), var(--clamp-max) * 1rem);
 		
 /*** 
 FLUID TEXT SIZE SYSTEM 
@@ -81,19 +98,29 @@ Base text sizes are used to calculate the fluid text and heading styles. Adjust 
 	
 /*** 
 FLUID SPACING SYSTEM 
-Base spacing is used to calculate margin and padding styles. Adjust accordingly.	
+Base spacing is used to calculate margin and padding styles. Adjust accordingly.
 ***/
 	
-	--base-space: 3; /* Correlates to REM */
-	--space-l-mobile: 1.2; 
-	--space-l-desktop: 2.2;
-	--space-xl-mobile: 1.4; 
-	--space-xl-desktop: 2.4; 
-	--space-xxl-mobile: 1.6; 
-	--space-xxl-desktop: 2.6; 
+	--base-space: 3;
+	--space-adjust-mob-xs: .6; 
+	--space-adjust-mob-s: .8; 
+	--space-adjust-mob-m: 1; 
+	--space-adjust-mob-l: 1.2; 
+	--space-adjust-mob-xl: 1.4; 
+	--space-adjust-mob-xxl: 1.8;
+	--space-adjust-desk-l: 1.2;
+	--space-adjust-desk-xl: 1.4;
+	--space-adjust-desk-xxl: 1.8;
 }
 
 /***** END ROOT VARIABLES *****/
+
+/***** BEGIN ELEMENT & CLASS STYLING *****/
+
+/*** 
+TEXT SIZING SYSTEM
+Nothing here should need to be adjusted.
+***
 
 :is(.text-m, .text-l, .text-xl, .text-xxl, h1, h2, h3, h4) {
 	font-size: clamp(var(--clamp-min) * 1rem, calc(var(--clamp-min) * 1rem + ((1vw - (var(--vp-min) / 100) * 1rem) * (100 * (var(--clamp-max) - var(--clamp-min)) / (var(--vp-max) - var(--vp-min))))), var(--clamp-max) * 1rem);
@@ -158,25 +185,25 @@ h6 {
 	padding: clamp(var(--pad-min) * 1rem, calc(var(--pad-min) * 1rem + ((1vw - (var(--vp-min) / 100) * 1rem) * (100 * (var(--pad-max) - var(--pad-min)) / (var(--vp-max) - var(--vp-min))))), var(--pad-max) * 1rem);
 }
 .padding-xs {
-	padding: calc(var(--base-space) * .5rem);
+	padding: calc(var(--base-space) * var(--space-adjust-mob-xs) * 1rem);
 }
 .padding-s {
-	padding: calc(var(--base-space) * .75rem);
+	padding: calc(var(--base-space) * var(--space-adjust-mob-s) * 1rem);
 }
 .padding-m {
-	padding: calc(var(--base-space) * 1rem);
+	padding: calc(var(--base-space) * var(--space-adjust-mob-m) * 1rem);
 }
 .padding-l {
-	--pad-min: calc(var(--base-space) * 1.15);
-	--pad-max: calc(var(--base-space) * 1.75);
+	--pad-min: calc(var(--base-space) * var(--space-adjust-mob-l));
+	--pad-max: calc(var(--base-space) * var(--space-adjust-desk-l));
 }
 .padding-xl {
-	--pad-min: calc(var(--base-space) * 1.25);
-	--pad-max: calc(var(--base-space) * 2);
+	--pad-min: calc(var(--base-space) * var(--space-adjust-mob-xl));
+	--pad-max: calc(var(--base-space) * var(--space-adjust-desk-xl));
 }
 .padding-xxl {
-	--pad-min: calc(var(--base-space) * 1.35);
-	--pad-max: calc(var(--base-space) * 2.25);
+	--pad-min: calc(var(--base-space) * var(--space-adjust-mob-xxl));
+	--pad-max: calc(var(--base-space) * var(--space-adjust-desk-xxl));
 }
 
 /*** MARGIN UTILITY CLASSES ***/
@@ -185,26 +212,27 @@ h6 {
 	margin-bottom: clamp(var(--margin-min) * 1rem, calc(var(--margin-min) * 1rem + ((1vw - (var(--vp-min) / 100) * 1rem) * (100 * (var(--margin-max) - var(--margin-min)) / (var(--vp-max) - var(--vp-min))))), var(--margin-max) * 1rem);
 }
 .margin-bottom-xs {
-	margin-bottom: calc(var(--base-space) * .5rem);
+	margin-bottom: calc(var(--base-space) * var(--space-adjust-mob-xs) * 1rem);
 }
 .margin-bottom-s {
-	margin-bottom: calc(var(--base-space) * .75rem);
+	margin-bottom: calc(var(--base-space) * var(--space-adjust-mob-s) * 1rem);
 }
 .margin-bottom-m {
-	margin-bottom: calc(var(--base-space) * 1rem);
+	margin-bottom: calc(var(--base-space) * var(--space-adjust-mob-m) * 1rem);
 }
 .margin-bottom-l {
-	--margin-min: calc(var(--base-space) * 1.15);
-	--margin-max: calc(var(--base-space) * 1.75);
+	--margin-min: calc(var(--base-space) * var(--space-adjust-mob-l));
+	--margin-max: calc(var(--base-space) * var(--space-adjust-desk-l));
 }
 .margin-bottom-xl {
-	--margin-min: calc(var(--base-space) * 1.25);
-	--margin-max: calc(var(--base-space) * 2);
+	--margin-min: calc(var(--base-space) * var(--space-adjust-mob-xl));
+	--margin-max: calc(var(--base-space) * var(--space-adjust-desk-xl));
 }
 .margin-bottom-xxl {
-	--margin-min: calc(var(--base-space) * 1.35);
-	--margin-max: calc(var(--base-space) * 3);
+	--margin-min: calc(var(--base-space) * var(--space-adjust-mob-xxl));
+	--margin-max: calc(var(--base-space) * var(--space-adjust-desk-xxl));
 }
+
 
 
 /* OWL SPACING UTILITY CLASSES */
