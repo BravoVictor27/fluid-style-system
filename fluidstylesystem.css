@@ -99,6 +99,7 @@ Base text sizes are used to calculate the fluid text and heading styles. Adjust 
 /*** 
 FLUID SPACING SYSTEM 
 Base spacing is used to calculate margin and padding styles. Adjust accordingly.
+The adjustment variables are multipliers of the base size.
 ***/
 	
 	--base-space: 3;
