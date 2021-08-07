@@ -76,6 +76,16 @@ Future plans: Auto generate full complimentary, triadic, analogous, etc. color s
 	--accent-trans-40: hsla(var(--accent-h), var(--accent-s), var(--accent-l), .4);
 	--accent-trans-20: hsla(var(--accent-h), var(--accent-s), var(--accent-l), .2);
 	--accent-comp: hsl(calc(var(--accent-h) + 180), var(--accent-s), var(--accent-l));
+	--base: hsl(var(--base-h), var(--base-s), var(--base-l));
+	--base-ultra-light: hsl(var(--base-h), var(--base-s), var(--ultra-light));
+	--base-light: hsl(var(--base-h), var(--base-s), var(--light));
+	--base-dark: hsl(var(--base-h), var(--secondary-s), var(--dark));
+	--base-ultra-dark: hsl(var(--base-h), var(--base-s), var(--ultra-dark));
+	--base-trans-80: hsla(var(--base-h), var(--base-s), var(--base-l), .8);
+	--base-trans-60: hsla(var(--base-h), var(--base-s), var(--base-l), .6);
+	--base-trans-40: hsla(var(--base-h), var(--base-s), var(--base-l), .4);
+	--base-trans-20: hsla(var(--base-h), var(--base-s), var(--base-l), .2);
+	--base-comp: hsl(calc(var(--base-h) + 180), var(--base-s), var(--base-l));
 	
 /*** END COLOR SYSTEM ***/
 	
