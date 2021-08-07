@@ -1,0 +1,358 @@
+html {
+  font-size: 62.5%; /* Set base font size to 10px */
+}
+
+/***** BEGIN ROOT VARIABLES *****/
+
+:root {
+	
+/*** COLOR SYSTEM ***/
+	
+/* CHANGE THESE */
+	
+	--primary-h: 44;
+	--primary-s: 98%;
+	--primary-l: 50%;
+
+	--secondary-h: 41.1;
+	--secondary-s: 100%;
+	--secondary-l: 63.3%;
+
+	--accent-h: 54.5;
+	--accent-s: 15.5%;
+	--accent-l: 86.1%;
+
+	--base-h: 357.2;
+	--base-s: 70.5%;
+	--base-l: 47.8%;
+
+/* NO TOUCHEY */
+	
+	--ultra-light: 95%;
+	--light: 85%;
+	--dark: 25%;
+	--ultra-dark: 10%;
+	--primary: hsl(var(--primary-h), var(--primary-s), var(--primary-l));
+	--primary-ultra-light: hsl(var(--primary-h), var(--primary-s), var(--ultra-light));
+	--primary-light: hsl(var(--primary-h), var(--primary-s), var(--light));
+	--primary-dark: hsl(var(--primary-h), var(--primary-s), var(--dark));
+	--primary-ultra-dark: hsl(var(--primary-h), var(--primary-s), var(--ultra-dark));
+	--primary-trans-80: hsla(var(--primary-h), var(--primary-s), var(--primary-l), .8);
+	--primary-trans-60: hsla(var(--primary-h), var(--primary-s), var(--primary-l), .6);
+	--primary-trans-40: hsla(var(--primary-h), var(--primary-s), var(--primary-l), .4);
+	--primary-trans-20: hsla(var(--primary-h), var(--primary-s), var(--primary-l), .2);
+	--primary-comp: hsl(calc(var(--primary-h) + 180), var(--primary-s), var(--primary-l));
+	--secondary: hsl(var(--secondary-h), var(--secondary-s), var(--secondary-l));
+	--secondary-ultra-light: hsl(var(--secondary-h), var(--secondary-s), var(--ultra-light));
+	--secondary-light: hsl(var(--secondary-h), var(--secondary-s), var(--light));
+	--secondary-dark: hsl(var(--secondary-h), var(--secondary-s), var(--dark));
+	--secondary-ultra-dark: hsl(var(--secondary-h), var(--secondary-s), var(--ultra-dark));
+	--secondary-trans-80: hsla(var(--secondary-h), var(--secondary-s), var(--secondary-l), .8);
+	--secondary-trans-60: hsla(var(--secondary-h), var(--secondary-s), var(--secondary-l), .6);
+	--secondary-trans-40: hsla(var(--secondary-h), var(--secondary-s), var(--secondary-l), .4);
+	--secondary-trans-20: hsla(var(--secondary-h), var(--secondary-s), var(--secondary-l), .2);
+	--secondary-comp: hsl(calc(var(--secondary-h) + 180), var(--secondary-s), var(--secondary-l));
+	--accent: hsl(var(--accent-h), var(--accent-s), var(--accent-l));
+	--accent-ultra-light: hsl(var(--accent-h), var(--accent-s), var(--ultra-light));
+	--accent-light: hsl(var(--accent-h), var(--accent-s), var(--light));
+	--accent-dark: hsl(var(--accent-h), var(--accent-s), var(--dark));
+	--accent-ultra-dark: hsl(var(--accent-h), var(--accent-s), var(--ultra-dark));
+	--accent-trans-80: hsla(var(--accent-h), var(--accent-s), var(--accent-l), .8);
+	--accent-trans-60: hsla(var(--accent-h), var(--accent-s), var(--accent-l), .6);
+	--accent-trans-40: hsla(var(--accent-h), var(--accent-s), var(--accent-l), .4);
+	--accent-trans-20: hsla(var(--accent-h), var(--accent-s), var(--accent-l), .2);
+	--accent-comp: hsl(calc(var(--accent-h) + 180), var(--accent-s), var(--accent-l));
+	
+/*** END COLOR SYSTEM ***/
+	
+/*** CLAMP SYSTEM ***/
+	
+	--vp-min: 32; /* Viewport Min Size in REM */
+	--vp-max: 108; /* Viewport Max Size in REM */
+	--calc-clamp: clamp(var(--clamp-min) * 1rem, calc(var(--clamp-min) * 1rem + ((1vw - (var(--vp-min) / 100) * 1rem) * (100 * (var(--clamp-max) - var(--clamp-min)) / (var(--vp-max) - var(--vp-min))))), var(--clamp-max) * 1rem);
+		
+/*** 
+FLUID TEXT SIZE SYSTEM 
+Base text sizes are used to calculate the fluid text and heading styles. Adjust accordingly.
+***/
+	
+	--base-text-mobile: 1.6; /* Correlates to REM */
+	--base-text-desktop: 1.8; /* Correlates to REM */
+	
+/*** 
+FLUID SPACING SYSTEM 
+Base spacing is used to calculate margin and padding styles. Adjust accordingly.	
+***/
+	
+	--base-space: 3; /* Correlates to REM */
+	--space-l-mobile: 1.2; 
+	--space-l-desktop: 2.2;
+	--space-xl-mobile: 1.4; 
+	--space-xl-desktop: 2.4; 
+	--space-xxl-mobile: 1.6; 
+	--space-xxl-desktop: 2.6; 
+}
+
+/***** END ROOT VARIABLES *****/
+
+:is(.text-m, .text-l, .text-xl, .text-xxl, h1, h2, h3, h4) {
+	font-size: clamp(var(--clamp-min) * 1rem, calc(var(--clamp-min) * 1rem + ((1vw - (var(--vp-min) / 100) * 1rem) * (100 * (var(--clamp-max) - var(--clamp-min)) / (var(--vp-max) - var(--vp-min))))), var(--clamp-max) * 1rem);
+}
+
+/*** 
+HEADING SIZES 
+Leave the global font size settings in Oxygen blank.
+***/
+
+h1 {
+	--clamp-min: calc(var(--base-text-mobile) * 1.6);
+	--clamp-max: calc(var(--base-text-desktop) * 2.4);
+}
+h2 {
+	--clamp-min: calc(var(--base-text-mobile) * 1.4);
+	--clamp-max: calc(var(--base-text-desktop) * 2);
+}
+h3 {
+	--clamp-min: calc(var(--base-text-mobile) * 1.2);
+	--clamp-max: calc(var(--base-text-desktop) * 1.6);
+}
+h4 {
+	--clamp-min: calc(var(--base-text-mobile) * 1.15);
+	--clamp-max: calc(var(--base-text-desktop) * 1.2);
+}
+h5 {
+	font-size: calc(var(--base-text-mobile) * 1rem);
+}
+h6 {
+	font-size: calc(var(--base-text-mobile) * 1rem - .2rem);
+}
+
+/*** TEXT SIZE UTILITY CLASSES ***/
+
+.text-xs {
+	font-size: calc(var(--base-text-mobile) * 1rem - .2rem);
+}
+.text-s {
+	font-size: calc(var(--base-text-mobile) * 1rem);
+}
+.text-m {
+	--clamp-min: var(--base-text-mobile);
+	--clamp-max: var(--base-text-desktop);
+}
+.text-l {
+	--clamp-min: calc(var(--base-text-mobile) * 1.15);
+	--clamp-max: calc(var(--base-text-desktop) * 1.15);
+}
+.text-xl {
+	--clamp-min: calc(var(--base-text-mobile) * 1.25);
+	--clamp-max: calc(var(--base-text-desktop) * 1.6);
+}
+.text-xxl {
+	--clamp-min: calc(var(--base-text-mobile) * 1.35);
+	--clamp-max: calc(var(--base-text-desktop) * 1.8);
+}
+
+/*** PADDING UTILITY CLASSES ***/
+
+:is(.padding-l, .padding-xl, .padding-xxl) {
+	padding: clamp(var(--pad-min) * 1rem, calc(var(--pad-min) * 1rem + ((1vw - (var(--vp-min) / 100) * 1rem) * (100 * (var(--pad-max) - var(--pad-min)) / (var(--vp-max) - var(--vp-min))))), var(--pad-max) * 1rem);
+}
+.padding-xs {
+	padding: calc(var(--base-space) * .5rem);
+}
+.padding-s {
+	padding: calc(var(--base-space) * .75rem);
+}
+.padding-m {
+	padding: calc(var(--base-space) * 1rem);
+}
+.padding-l {
+	--pad-min: calc(var(--base-space) * 1.15);
+	--pad-max: calc(var(--base-space) * 1.75);
+}
+.padding-xl {
+	--pad-min: calc(var(--base-space) * 1.25);
+	--pad-max: calc(var(--base-space) * 2);
+}
+.padding-xxl {
+	--pad-min: calc(var(--base-space) * 1.35);
+	--pad-max: calc(var(--base-space) * 2.25);
+}
+
+/*** MARGIN UTILITY CLASSES ***/
+
+:is(.margin-bottom-l, .margin-bottom-xl, .margin-bottom-xxl) {
+	margin-bottom: clamp(var(--margin-min) * 1rem, calc(var(--margin-min) * 1rem + ((1vw - (var(--vp-min) / 100) * 1rem) * (100 * (var(--margin-max) - var(--margin-min)) / (var(--vp-max) - var(--vp-min))))), var(--margin-max) * 1rem);
+}
+.margin-bottom-xs {
+	margin-bottom: calc(var(--base-space) * .5rem);
+}
+.margin-bottom-s {
+	margin-bottom: calc(var(--base-space) * .75rem);
+}
+.margin-bottom-m {
+	margin-bottom: calc(var(--base-space) * 1rem);
+}
+.margin-bottom-l {
+	--margin-min: calc(var(--base-space) * 1.15);
+	--margin-max: calc(var(--base-space) * 1.75);
+}
+.margin-bottom-xl {
+	--margin-min: calc(var(--base-space) * 1.25);
+	--margin-max: calc(var(--base-space) * 2);
+}
+.margin-bottom-xxl {
+	--margin-min: calc(var(--base-space) * 1.35);
+	--margin-max: calc(var(--base-space) * 3);
+}
+
+
+/* OWL SPACING UTILITY CLASSES */
+
+:is(.owl-l, .owl-xl, .owl-xxl) {
+	margin-top: clamp(var(--margin-min) * 1rem, calc(var(--margin-min) * 1rem + ((1vw - (var(--vp-min) / 100) * 1rem) * (100 * (var(--margin-max) - var(--margin-min)) / (var(--vp-max) - var(--vp-min))))), var(--margin-max) * 1rem);
+}
+
+.ct-section.owl-xs .ct-section-inner-wrap > * + *,
+.owl-xs:not(.ct-section) > * + * {
+	margin-top: calc(var(--base-space) * .5rem);
+}
+
+.ct-section.owl-s .ct-section-inner-wrap > * + *,
+.owl-s:not(.ct-section) > * + * {
+	margin-top: calc(var(--base-space) * .75rem);
+}
+
+.ct-section.owl-m .ct-section-inner-wrap > * + *,
+.owl-m:not(.ct-section) > * + * {
+	margin-top: calc(var(--base-space) * 1rem);
+}
+
+.ct-section.owl-l .ct-section-inner-wrap > * + *,
+.owl-l:not(.ct-section) > * + * {
+	--margin-min: calc(var(--base-space) * 1.15);
+	--margin-max: calc(var(--base-space) * 1.75);
+}
+
+.ct-section.owl-xl .ct-section-inner-wrap > * + *,
+.owl-xl:not(.ct-section) > * + * {
+	--margin-min: calc(var(--base-space) * 1.25);
+	--margin-max: calc(var(--base-space) * 2);
+}
+
+.ct-section.owl-xxl .ct-section-inner-wrap > * + *,
+.owl-xxl:not(.ct-section) > * + * {
+	--margin-min: calc(var(--base-space) * 1.35);
+	--margin-max: calc(var(--base-space) * 3);
+}
+
+/* MAX WIDTH UTILITY CLASSES */
+
+.max-w-xs {
+	width: 100%;
+	max-width: 32rem;
+}
+.max-w-s {
+	width: 100%;
+  	max-width: 48rem;
+}
+.max-w-m {
+	width: 100%;
+ 	 max-width: 64rem;
+}
+.max-w-l {
+	width: 100%;
+ 	 max-width: 72rem;
+}
+.max-w-xl {
+	width: 100%;
+ 	 max-width: 96rem;
+}
+.max-w-xxl {
+	width: 100%;
+ 	max-width: 112rem;
+}
+.max-w-full {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* BREAKOUT UTILITY CLASSES */
+
+.breakout-s {
+	width: 60vw;
+	max-width: 60vw;
+	margin: 0 calc(-30vw + 50%);
+}
+.breakout-m {
+	width: 70vw;
+	max-width: 70vw;
+	margin: 0 calc(-35vw + 50%);
+}
+.breakout-l {
+	width: 80vw;
+	max-width: 80vw;
+	margin: 0 calc(-40vw + 50%);
+}
+.breakout-xl {
+	width: 90vw;
+	max-width: 90vw;
+	margin: 0 calc(-45vw + 50%);
+}
+.breakout-full {
+	width: 100vw;
+	max-width: 100vw;
+	margin: 0 calc(-50vw + 50%);
+}
+@media (max-width: var(--vp-max)) {
+	[class*="breakout--"] {
+		width: 100%;
+		max-width: 100%;
+		margin: 0;
+	}
+}
+
+/* STICKY UTILITY CLASSES */
+
+.sticky {
+	position: sticky;
+	top: 0;
+}
+.sticky-top--s {
+	top: 2.5%;
+}
+.sticky-top--m {
+	top: 5%;
+}
+.sticky-top--l {
+	top: 10%;
+}
+
+/* HEIGHT UTILITY CLASSES */
+
+.height--30 .ct-section-inner-wrap {
+	min-height: 30vh;
+}
+.height--40 .ct-section-inner-wrap {
+	min-height: 40vh;
+}
+.height--50 .ct-section-inner-wrap {
+	min-height: 50vh;
+}
+.height--60 .ct-section-inner-wrap {
+	min-height: 60vh;
+}
+.height--70 .ct-section-inner-wrap {
+	min-height: 70vh;
+}
+.height--80 .ct-section-inner-wrap {
+	min-height: 80vh;
+}
+.height--90 .ct-section-inner-wrap {
+	min-height: 90vh;
+}
+.height--100 .ct-section-inner-wrap {
+	min-height: 100vh;
+}
+
+/***** END UTILITY CLASSES *****/
