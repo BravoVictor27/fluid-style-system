@@ -131,7 +131,7 @@ The adjustment variables are multipliers of the base size.
 /*** 
 TEXT SIZING SYSTEM
 Nothing here should need to be adjusted.
-***
+***/
 
 :is(.text-m, .text-l, .text-xl, .text-xxl, h1, h2, h3, h4) {
 	font-size: clamp(var(--clamp-min) * 1rem, calc(var(--clamp-min) * 1rem + ((1vw - (var(--vp-min) / 100) * 1rem) * (100 * (var(--clamp-max) - var(--clamp-min)) / (var(--vp-max) - var(--vp-min))))), var(--clamp-max) * 1rem);
